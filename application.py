@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=r"C:\Users\Himaja\Documents\project1\project1\templates")
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def home(): return render_template('index.html')
 
 @app.route("/register", methods=["GET"])
 def register():
@@ -12,6 +11,6 @@ def register():
     password = request.form.get("password")
     return render_template("register.html", name=name, password=password)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
 
+if __name__ == '__main__': 
+    app.run()
