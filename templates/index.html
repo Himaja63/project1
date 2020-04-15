@@ -2,15 +2,29 @@
 <html>
     <head>
         <title>Books</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            h1{
+                color: whitesmoke;
+                text-align: center;
+            }
+
+            body {
+                background-image: url("https://images.all-free-download.com/images/graphicthumb/books_in_church_190501.jpg");
+            }            
+        </style>
     </head>
     <body>
+        <div class="bg"></div>
+
         <h1>
             Register Here!!!
         </h1>
-        <form action = "{{url_for('register')}}" method="GET">
-            <input type = "text" name = "name" placeholder = "Enter your name">
-            <input type = "text" password = "password" placeholder="Enter password">
+        <form action = "{{url_for('register')}}" method="post">
+            <input type = "text" name = "name" placeholder = "Enter your name"><br><br>
+            <input type = "password" password = "password" placeholder="Enter password"><br><br>
             <button>Register</button>
         </form>
     </body>
 </html>
+
