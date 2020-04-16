@@ -12,6 +12,5 @@ def register():
     password = request.form.get("password")    
     return render_template("register.html", name=name, password=password)
 
-
 if __name__ == '__main__': 
     app.run()
