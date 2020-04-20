@@ -46,6 +46,26 @@ def Member():
       u_list = Users.query.all()
       return render_template("admin.html", Users=u_list)
 
+@app.route("/auth",methods = ["GET","POST"])
+def authenticate():
+    if request.method == "POST":   
+        name = request.form.get("name")
+        password = request.form.get("password")
+        userdata = Users.query.filter_by(username=name).first()
+        if userdata is not None:
+            # validate username and password
+            if userdata.username == name and userdata.password == password:               
+                
+                return render_template("login.html", name=name)
+           
+            else:
+                return render_template("index.html", message="Invalid username/password.")
+        # new user
+        else:
+            return render_template("index.html", message="Not yet registered..please register")
+    else :
+        return "Invalid login request"
+
 if __name__ == '__main__': 
     app.run()
 
