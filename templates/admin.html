@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> User Logged In </title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        td {
+            color: palevioletred;
+        }
+
+        h2,
+        th {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> List of Registered Users </h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in Users %}
+            <tr>
+                <td>{{ m.username }}</td>
+                <td>{{ m.timestamp}}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+

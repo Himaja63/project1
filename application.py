@@ -40,6 +40,12 @@ def register():
     except Exception :
 	    return render_template("error.html", error = "Registration not succesfull")
 
+@app.route("/admin")
+
+def Member():     
+      u_list = Users.query.all()
+      return render_template("admin.html", Users=u_list)
+
 if __name__ == '__main__': 
     app.run()
 
