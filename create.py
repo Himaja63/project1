@@ -23,7 +23,7 @@ def main():
  
   
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     # Allows for command line interaction with Flask application
   with app.app_context():
     main()
