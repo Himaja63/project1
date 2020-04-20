@@ -1,5 +1,4 @@
 import os
-
 import csv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -8,7 +7,6 @@ from sqlalchemy import Column, Integer, String,DateTime,exists,Sequence
 from flask import Flask
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-
 
 app1 = Flask(__name__)
 
