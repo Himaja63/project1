@@ -72,7 +72,7 @@ def authenticate():
 
 @app.route("/search" , methods=['POST'])
 def search():
-    # Booklist = BOOKS.query.all()
+    Booklist = BOOKS.query.all()
     select = request.form.get('comp_select')    
     if (select == 'ISBN number of a book'):
         holder = 'Give an isbn number'
@@ -90,8 +90,38 @@ def search():
         holder = 'select an option'    
         text = 'Please select an option from the above drop down box'    
         return render_template('search.html', holder = holder, 
-        message = "select an option in the previous page", text = text)
+        message = "select an option in the previous page", text = text)        
 
+   
+
+@app.route("/results", methods = ['POST'])
+def results():    
+    option = request.form.get("option")
+    print(option)  
+    if (option is not None):  
+        result = db.session.query(BOOKS.tittle).\
+            filter(BOOKS.isbn == request.form.get("option")).\
+            scalar()
+        if (result is not None):
+            return render_template('search.html', option = option, result = result)
+        else:
+            result = db.session.query(BOOKS.tittle).\
+                filter(BOOKS.tittle == request.form.get("option")).\
+                scalar()
+            if (result is not None):
+                return render_template('search.html', option = option, result = result)
+            else :
+                result = db.session.query(BOOKS.tittle).\
+                    filter(BOOKS.author == request.form.get("option")).\
+                    scalar().all()
+                if (result is not None):
+                    return render_template('search.html', option = option, result = result)
+                else:
+                    return render_template('search.html', message = 'Give valid input')
+    else :
+        return render_template('search.html', message = 'Give an input')
+        
+    
 
 
 

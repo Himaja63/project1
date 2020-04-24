@@ -17,10 +17,25 @@
         <p>
             {{holder}} in the following search box to get the books
         </p>
-        <form action= "{{ url_for('search') }}" method="post">            
+
+        <form role="form" method='POST' action="{{ url_for('results') }}">
+            <div class="form-group">                
+              <input type="search" name="option" class="form-control" id="url-box" placeholder= "{{holder}}" style="max-width: 300px;" autofocus required>
+            </div><br>
+            <button type="submit" class="btn btn-default">Go</button>
+            <h3 style="color:red;"> {{message}} </h3>
+            <p>
+                <!-- {{option}}<br>  -->
+                {{result}} 
+                <!-- <h3 style="color:red;"> {{message}} </h3>         -->
+            </p>
+          </form>
+          <br>
+          
+        <!-- <form action= "{{ url_for('search') }}" method="post">            
             <input type = "search", placeholder="{{holder}}">
             <h3 style="color:red;"> {{message}} </h3>
-        </form> <br><br>        
+        </form> <br><br>         -->
     </body>
 </html>
         
