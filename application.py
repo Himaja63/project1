@@ -1,8 +1,7 @@
 import os
 
 from flask import Flask, render_template, request
-
-
+import json 
 from flask import Flask, session,url_for,redirect
 from flask import flash
 from flask_session import Session
@@ -102,27 +101,27 @@ def results():
         result = db.session.query(BOOKS.tittle).\
             filter(BOOKS.isbn == request.form.get("option")).\
             scalar()
+        
         if (result is not None):
             return render_template('search.html', option = option, result = result)
         else:
             result = db.session.query(BOOKS.tittle).\
-                filter(BOOKS.tittle == request.form.get("option")).\
-                scalar()
+            filter(BOOKS.tittle == request.form.get("option")).\
+            scalar()                   
             if (result is not None):
                 return render_template('search.html', option = option, result = result)
             else :
                 result = db.session.query(BOOKS.tittle).\
-                    filter(BOOKS.author == request.form.get("option")).\
-                    scalar().all()
+                    filter(BOOKS.author == request.form.get("option")).all()
+                
+                result = json.dumps(result) 
+                
                 if (result is not None):
                     return render_template('search.html', option = option, result = result)
                 else:
                     return render_template('search.html', message = 'Give valid input')
     else :
         return render_template('search.html', message = 'Give an input')
-        
-    
-
 
 
 if __name__ == '__main__': 
