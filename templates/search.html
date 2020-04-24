@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>search</title>
+        <style>
+            h1{
+                color: green;
+                text-align: center;
+            }
+            
+            body {
+                background-image: url("https://img.freepik.com/free-photo/rows-books-library_73152-2680.jpg?size=626&ext=jpg");
+            }            
+        </style>
+    </head>
+    <body>
+        <p>
+            {{holder}} in the following search box to get the books
+        </p>
+        <form action= "{{ url_for('search') }}" method="post">            
+            <input type = "search", placeholder="{{holder}}">
+            <h3 style="color:red;"> {{message}} </h3>
+        </form> <br><br>        
+    </body>
+</html>
+        

@@ -8,5 +8,13 @@ class Users(db.Model):
     password = db.Column(db.String, nullable=False)
     timestamp=db.Column(db.String, nullable=False)
 
+class BOOKS(db.Model):
+    __tablename__ = "BOOKS"
+    isbn =db.Column(db.String, primary_key=True)
+    tittle = db.Column(db.String, nullable=False)
+    author = db.Column(db.String, nullable=False)
+    year = db.Column(db.String, nullable=False)
+
+
 
     

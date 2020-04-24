@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app1 = Flask(__name__)
 
-# Tell Flask what SQLAlchemy databas to use.
+# Tell Flask what SQLAlchemy database to use.
 app1.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app1.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app1.app_context().push()
@@ -25,7 +25,7 @@ class Books(db1.Model):
     author = db1.Column(db1.String, nullable = False)
     year = db1.Column(db1.String, nullable= False)
 
-db1.init_app(app1)
+# db1.init_app(app1)
 db1.create_all()
 def main():
     f= open("books.csv")
