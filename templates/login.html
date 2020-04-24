@@ -20,19 +20,19 @@
         </h1>
         Hello, {{name}}!!!!<br>
         You have succesfully logged in<br><br>
-        <form class="form-inline" method="post" action="{{ url_for('search') }}">
-            <div class="form-group">
-              <div class="input-group">
-                  <span class="input-group-addon">Please select</span>
-                      <select name="comp_select" class="selectpicker form-control">
-                        {% for o in data %}
-                        <option value="{{ o.name }}">{{ o.name }}</option>
-                        {% endfor %}
-                      </select>
-              </div><br>
-              <button type="submit" class="btn btn-default">Enter</button>
-            </div>
-          </form><br>
+        <p>
+            Give isbn number or title of the book or author name in the following search box
+        </p>
+
+        <form role="form" method='POST' action="{{ url_for('search') }}">
+            <div class="form-group">                
+              <input type="search" name="option" class="form-control" id="url-box" placeholder= "Give isbn number or title or author" style="max-width: 300px;" autofocus required>
+            </div><br>
+            <button type="submit" class="btn btn-default">Go</button>
+            <h3 style="color:red;"> {{message}} </h3>
+            
+          </form>
+          <br>     
           
         <form action="/">
             <button type="submit" class="logout" value="Logout">Logout</button>

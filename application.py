@@ -58,8 +58,7 @@ def authenticate():
         if userdata is not None:
             # validate username and password
             if userdata.username == name and userdata.password == password:         
-                return render_template("login.html", name=name, 
-                data=[{'name':'select an option'},{'name':'ISBN number of a book'}, {'name':'title of a book'}, {'name':'author of a book'}])
+                return render_template("login.html", name=name)           
             
             else:
                 return render_template("index.html", message="Invalid username/password.")
@@ -72,29 +71,6 @@ def authenticate():
 @app.route("/search" , methods=['POST'])
 def search():
     Booklist = BOOKS.query.all()
-    select = request.form.get('comp_select')    
-    if (select == 'ISBN number of a book'):
-        holder = 'Give an isbn number'
-        text = 'Give an isbn number in the in the following search box' 
-        return render_template('search.html', holder = holder, text = text)
-    if (select == 'title of a book'):
-        holder = 'Give a book title'
-        text = 'Give title of a book in the in the following search box' 
-        return render_template('search.html', holder = holder, text = text)
-    if (select == 'author of a book'):
-        holder = 'Give an author'
-        text = 'Give the name of an auther of a book in the following search box'
-        return render_template('search.html', holder = holder, text = text)
-    else:
-        holder = 'select an option'    
-        text = 'Please select an option from the above drop down box'    
-        return render_template('search.html', holder = holder, 
-        message = "select an option in the previous page", text = text)        
-
-   
-
-@app.route("/results", methods = ['POST'])
-def results():    
     option = request.form.get("option")
     print(option)  
     if (option is not None):  
@@ -123,6 +99,12 @@ def results():
     else :
         return render_template('search.html', message = 'Give an input')
 
+
+   
+
+# @app.route("/results", methods = ['POST'])
+# def results():    
+    
 
 if __name__ == '__main__': 
     app.run()
