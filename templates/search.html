@@ -15,11 +15,24 @@
     </head>
     <body>
         <h1>Books Results</h1>
-        <p>            
-            {{result}} 
-            <h3 style="color:red;"> {{message}} </h3>           
-            
+        <p>          
+            <h3 style="color:red;"> {{message}} </h3>            
         </p> 
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in result %}
+                <tr>
+                    <td>{{m}}</td>                  
+    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         
     </body>
 </html>
