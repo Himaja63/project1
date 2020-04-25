@@ -75,7 +75,7 @@ def search():
       
     if (option is not None):  
         result = db.session.query(BOOKS.tittle).\
-            filter(BOOKS.isbn.like("%"+option + "%")).all()
+            filter(BOOKS.isbn.ilike("%"+option + "%")).all()
         result = [item for t in result for item in t]
         print(type(result))
         if (len(result) > 0):            
@@ -83,13 +83,13 @@ def search():
         else:
             
             result = db.session.query(BOOKS.tittle).\
-                filter(BOOKS.tittle.like("%"+option + "%")).all()
+                filter(BOOKS.tittle.ilike("%"+option + "%")).all()
             result = [item for t in result for item in t]                
             if (len(result) > 0):
                 return render_template('search.html', result = result)
             else :
                 result = db.session.query(BOOKS.tittle).\
-                    filter(BOOKS.author.like("%"+option + "%")).all()                
+                    filter(BOOKS.author.ilike("%"+option + "%")).all()                
                 result = [item for t in result for item in t]
                 print(type(result))               
                 if (len(result) > 0):
