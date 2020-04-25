@@ -72,28 +72,29 @@ def authenticate():
 def search():
     Booklist = BOOKS.query.all()
     option = request.form.get("option")
-    print(option)  
+      
     if (option is not None):  
         result = db.session.query(BOOKS.tittle).\
-            filter(BOOKS.isbn == request.form.get("option")).\
-            scalar()
+            filter(BOOKS.isbn.like("%"+option + "%")).all()
         
-        if (result is not None):
-            return render_template('search.html', option = option, result = result)
+        print(type(result))
+        if (len(result) > 0):
+            
+            return render_template('search.html', result = result)
         else:
+            
             result = db.session.query(BOOKS.tittle).\
-            filter(BOOKS.tittle == request.form.get("option")).\
-            scalar()                   
-            if (result is not None):
-                return render_template('search.html', option = option, result = result)
+            filter(BOOKS.tittle.like("%"+option + "%")).all()
+                             
+            if (len(result) > 0):
+                return render_template('search.html', result = result)
             else :
                 result = db.session.query(BOOKS.tittle).\
-                    filter(BOOKS.author == request.form.get("option")).all()
+                    filter(BOOKS.author.like("%"+option + "%")).all()                
                 
-                result = json.dumps(result) 
-                
-                if (result is not None):
-                    return render_template('search.html', option = option, result = result)
+                print(type(result))               
+                if (len(result) > 0):
+                    return render_template('search.html', result = result)
                 else:
                     return render_template('search.html', message = 'Give valid input')
     else :

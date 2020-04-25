@@ -26,10 +26,10 @@
 
         <form role="form" method='POST' action="{{ url_for('search') }}">
             <div class="form-group">                
-              <input type="search" name="option" class="form-control" id="url-box" placeholder= "Give isbn number or title or author" style="max-width: 300px;" autofocus required>
+              <input type="search" name="option" class="form-control" id="url-box" placeholder= "isbn or title or author" style="max-width: 600px;" autofocus required>
             </div><br>
             <button type="submit" class="btn btn-default">Go</button>
-            <h3 style="color:red;"> {{message}} </h3>
+            <!-- <h3 style="color:red;"> {{message}} </h3> -->
             
           </form>
           <br>     
